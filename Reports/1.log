@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2017.3.20)  20 MAR 2017 13:28
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2017.3.20)  20 MAR 2017 14:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -47,14 +47,20 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [1
 
 ]
-[1] (./1.aux) ) 
-Here is how much of TeX's memory you used:
- 241 strings out of 495658
- 2439 string characters out of 6187951
- 47398 words of memory out of 5000000
- 3513 multiletter control sequences out of 15000+600000
- 6983 words of font info for 25 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 23i,6n,17p,287b,179s stack positions out of 5000i,500n,10000p,200000b,80000s
+[1] [1] [2] (./1.toc)
+\tf@toc=\write3
+\openout3 = `1.toc'.
 
-Output written on 1.pdf (2 pages).
+ [3
+
+] [4] (./1.aux) ) 
+Here is how much of TeX's memory you used:
+ 250 strings out of 495658
+ 2535 string characters out of 6187951
+ 48398 words of memory out of 5000000
+ 3518 multiletter control sequences out of 15000+600000
+ 8194 words of font info for 29 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 23i,6n,17p,445b,179s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on 1.pdf (6 pages).
