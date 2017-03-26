@@ -1,7 +1,12 @@
 % !TeX spellcheck = en_GB
-\documentclass[]{report}
+\documentclass{article}
+\usepackage{sectsty}
+\usepackage{enumitem}
+\usepackage{soul}% http://ctan.org/pkg/soul
+\usepackage[T1]{fontenc}
 
-
+\sectionfont{\fontsize{15}{15}\selectfont}
+\setlist{parsep=0pt,listparindent=\parindent}
 % Title Page
 \title{Simulatenous Localisation And Mapping for Unmanned Ground and Aerial Vehicles}
 \author{P Sai Ramana Kiran}
@@ -32,7 +37,55 @@ Simultaneous Localization And Mapping aka SLAM is basic problem in robotics. Thi
 	\section*{Probabilistic Graphical Models}
 \end{center}
  Graph theory and more specifically PGMs forms the basis for both computational and analytical formulation of SLAM
+
 \newpage
- 
+
+\begin{center}\section*{SLAM book Introduction and Methods}\end{center} 
+\subsubsection*{Introduction}
+Types of Sensors:
+
+\begin{itemize}[noitemsep,topsep=0pt]
+\item[--] \setul{1pt}{.4pt}\ul{Proprioceptive} - measures changes within robot. Like odometry and IMU
+\item[--] \setul{1pt}{.4pt}\ul{extroceptive} - measures changes outside the robot. 
+\item[--] \setul{1pt}{.4pt}\ul{environmental} - measures changes of the robot from environment perspective
+\end{itemize}
+\subsubsection*{Robotic Bases}
+
+Diversity in mobile robots:
+\begin{itemize}[noitemsep,topsep=0pt]
+\item[--] 	
+\setul{1pt}{.4pt}\ul{Legged Robot} - One leg jumper, bipeds etc; Efficient and secure control of agile walking
+or running biped robots is thus still an active area
+of research.
+\item[--]
+\setul{1pt}{.4pt}\ul{Flying Robots} - UAVs and Multirotors; Absence of mechanical, reliable odometry can be alleviated using IMUs, monocular or stereo cameras. 
+\item[--]
+\setul{1pt}{.4pt}\ul{Submarine Robots} - Unlike aerial vehicles these robots doesn't even have GPS. Dead reckoning can be achieved with either
+Doppler Velocity Log (DVL), inertial sensors or
+a combination of both (Larsen, 2000).
+\item[--]
+\setul{1pt}{.4pt}\ul{Wheeled Robots} - Odometry is the primary sensor used for both Dead reckoning and feedback to the low level motor controller. Different kinds of wheeled robots are as follows:
+\begin{itemize}
+	\item[$\rightarrow$] Differential Drive -  Differential motor velocities are used for locomotion of the vehicle.Two possible design: <install figures?>
+	\begin{enumerate}
+		\item Two wheel differential drive
+		\item Tricycle with two wheel motors and encoders.
+		 
+		Compared to Tricycle or Ackermann models, these vehicles have $0$ minimum turning radius and steering wheel is not required
+		\item Four wheel differential drive - geometry induced slippage while turning
+	
+	\end{enumerate}
+	\item[$\rightarrow$] Tricycle model - where there will be same wheel for driving as well as steering. Same equations as Two wheel differential drive but, imposes minimum turning radius which can be easily avoided with differential drive. 
+	\item[$\rightarrow$] Ackermann Steering - Present day Automobiles available in the market. This is stable than tricycle vehicle in outdoor environments. Exhibits reduced maneuverability due to minimum turning radius. 
+	\item[$rightarrow$] Sychro Drive - All the three or more wheels exhibit steering and driving. Mechanically coupled such that at any time vehicle can move in any direction provided time.  
+\end{itemize}
+
+
+\end{itemize}
+\newpage
+\begin{center}
+	\section*{Appendix A}
+\end{center}
+\section*{Basic Probability}
 
 \end{document}          
