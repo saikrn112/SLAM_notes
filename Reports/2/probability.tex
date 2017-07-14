@@ -1,0 +1,219 @@
+\documentclass[12pt]{report} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper,margin=0.7in} % or letterpaper (US) or a5paper 
+\usepackage{sectsty}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{titlesec}
+\usepackage{soul}% http://ctan.org/pkg/soul
+\usepackage[T1]{fontenc}
+
+\sectionfont{\fontsize{15}{15}\selectfont}
+\setlist{parsep=0pt,listparindent=\parindent}
+% Title Page
+\title{Report - 1 \\ Probability Basics required for SLAM }
+\author{P Sai Ramana Kiran}
+
+
+\begin{document}
+	\maketitle
+	\newpage
+	\begin{center}
+		\section*{Notation}
+	\end{center}
+	\newpage
+	\begin{center}
+		\section*{Probability Spaces}
+	\end{center}
+	\textbf{Probability:}
+	They are numbers associated to some phenomena in the real world, in particular to the possible outcomes of some stochastic process. \\
+	
+	\noindent
+	Simple definitions before we go into in depth details. 
+	\begin{itemize}[noitemsep,topsep=0pt]
+		\item[\textbf{Def:}] \setul{1pt}{.4pt}\ul{Outcome}: Possible result of the experiment. Each possible outcome of a particular experiment is unique, different and mutually exclusive. Mutually exclusive, only one outcome can occur on each trail of experiment. \item[\textbf{Def:}] \setul{1pt}{.4pt}\ul{Event}: Collection of outcomes which are sets to which probabilities are assigned. Outcomes can also be modeled as singleton random events\\ 
+		 
+	\end{itemize}
+	
+	\noindent
+	\textbf{Uncertainty in robotics:} It comes from 4 levels:
+	\begin{itemize}[noitemsep,topsep=0pt]
+	\item[$\rightarrow$] \setul{1pt}{.4pt}\ul{Sensors:} working
+	limitations,lack of precision, transient effects   
+	\item[$\rightarrow$] \setul{1pt}{.4pt}\ul{Actuators:} Inaccurate model; Limitations; Transient response;
+	\item[$\rightarrow$] \setul{1pt}{.4pt}\ul{Environment:} unless we have a controlled environment, examples static obstacles, environment introduces lot of noise 
+	\item[$\rightarrow$] \setul{1pt}{.4pt}\ul{Processing Decisions:} Floating point accuracy; psuedo random process.\\
+	\end{itemize}
+	
+	
+	\noindent
+	\textbf{Probability Space:}This space is mathematically modeled as a tuple of 3 elements : <Need to insert the diagram of all the spaces>
+	\begin{itemize}[noitemsep,topsep=0pt]
+		\item[--] \setul{1pt}{.4pt}\ul{Sample Space ($\Omega$):} Set of all different and possible outcomes
+		 \item[--] \setul{1pt}{.4pt}\ul{Random Events($E$):} Set of events or situations that can occur whose elements are sets of outcomes of sample space ($\Omega$) 
+		\item[--] \setul{1pt}{.4pt}\ul{Probability function ($P$):} A function which maps an outcome from Random Events space ($E$) to a real number. Mathematically, $P:E\rightarrow[0,1]$. 
+	\end{itemize}
+	 It formally defines the set of individual outcomes of the stochastic process of interest
+	 ( $\Omega$ ), a useful and well-formed grouping for those
+	 outcomes into random events ( E ) and a probabil-
+	 ity measure over those events ( P)\\
+	  
+	\noindent
+	\textbf{Properties of Random Events ($E$):} $E$ is a \textit{$\sigma$-algebra} of $\Omega$. It is not an algebra. It is a collection of the subsets of $\Omega$ including empty set with few defined operations from set algebra and Calculus. Moreover, $E$ is a subset of power set $2^{\Omega}$ (all possible collections subsets of $\Omega$).
+	It has following properties:
+		\begin{itemize}[noitemsep,topsep=0pt]
+			\item \setul{1pt}{.4pt}\ul{Operations:} All set operations are valid. Some of the important ones are  Union, Intersections, complements, differences and ordered pair.  
+			\item \setul{1pt}{.4pt}\ul{Closed:} To cope with any kind of event using the above operations $E$ must be closed. In other words, no matter which operation we perform on an event in $E$ the resulting event must be still be in $E$. \\ 
+			\noindent
+			More formally, $E$ must be closed under countable unions and intersections\\
+			\noindent
+			Simple example, if we take difference of same subset we get $\Phi$. For it to satisfy closedness, we include $\Phi$ in the $\sigma$ -algebra
+			\item \setul{1pt}{.4pt}\ul{Measures:} This is the probability function which assigns outcome to a non-negative real number. This quantifies the size or volume of the set of the $\sigma$-algebra
+			\item \setul{1pt}{.4pt}\ul{Limits of sets:}  We can perform limit operations on set using this. For this, closure under countable unions and intersections is paramount. Two important limit concepts widely used in sets are supremum and infimum  \\
+		\end{itemize}
+		
+	\noindent
+	\textbf{Simultaneity of random events and outcomes:} Several events are considered simultaneous if outcomes from all of them occur \textit{within a given period of time.} \\
+	Example, Intersection and union operation of two or more events.\\ 
+		\begin{itemize}
+			\item[--] Intersection of sets \{$A_1,A_2,A_3,\dots,A_n$\} is denoted by $\underset{i}{\cap}A_i$. It tells about the \textit{all} the events occurring simultaneously.
+			\item[--] Union of sets \{$A_1,A_2,A_3,\dots,A_n$\} is denoted by $\underset{i}{\cup}A_i$. It tells about the \textit{one or more} events occurring simultaneously.
+		\end{itemize}
+	From these examples, one point to be noted is that \textit{time} is included in the probability spaces formalism \textit{indirectly} through simultaneity concept. Also notice here that, till now we talked about different events (set of outcomes). Similarly, simultaneity of outcomes tells us that two different outcomes \textit{cannot} occur simultaneously because of their \textit{mutually exclusive} nature. \\
+	
+	\noindent
+	\textbf{Properties of probability function ($P$):}
+	From above formulation of intersection and union, some important properties or constraints or axioms are as follows,
+		
+	\begin{enumerate}
+		\item \textit{Maximum Probability} tells us that occurrence of any outcome out of all possible outcomes (sample space $\Omega$) is maximum and equal to 1
+		\begin{align}
+			P(\Omega) &= 1
+		\end{align}
+		\item  \textit{Mutual exclusivity} of two events (let's say $A_i$ and $A_j$) is denoted by $A_i || A_j$ and implies that $A_i \cap A_j = \Phi$. That is, two events won't occur simultaneously. Implication of this in union of two random events is 		
+		\begin{align}
+			P(\underset{i}{\cup}A_i) &= \underset{i}{\Sigma}P(A_i)
+		\end{align}
+		\item \textit{Mutual Independence} of two events say $A_i$ and $A_j$ is denoted by $A_i \bot A_j$ and is occurred when probability of them occurring simultaneously can be calculated directly from product of their individual probabilities i.e.
+		\begin{align}
+			P(\underset{i}{\cap}A_j) &= \underset{i}{\Pi} P(A_i) 
+		\end{align}
+		This implies that these events \textit{occur} independently and their probabilities are not affected on what events of other set do. This property is of great importance in the context of robotics and different from mutually exclusive where they \textit{cannot occur} simultaneously. 
+		\item \textit{Complementary  probability} of an event $A$ is denoted by $P(\overline{A})$ and is equal to 
+		\begin{align}
+			P(\overline{A}) &= 1 - P(A) 
+		\end{align}
+		\item It is important to note that non zero probabilities are assigned only to countable subset of events. For sample space which is continuous zero probability is assigned to every singleton random event unlike in discrete sample space case.\\
+		Best example to illustrate this point is from a continuous set of real numbers between $[0,1]$ probability of selecting $0.5$ 
+	\end{enumerate}
+	
+	\newpage
+	\begin{center}
+		\section*{Some points on Random Variables}
+	\end{center}
+	\begin{enumerate}
+		\item Random variable($X$) is defined as a function  that maps outcomes to numerical quantities (labels), typically real numbers or vector of real numbers. In mathematical terms this statement is equivalent to , $X:\Omega \rightarrow \mathbb{R}^{n}, n \in \mathbb{N}$
+		\item Value of the random variable changes as the underlying the outcome changes. Hence it is a stochastic mapping.
+		\item \textbf{Support} of the random variable contains the subset of co domain for which value gives non-zero probability and is denoted by $\textit{supp}(X)$ 
+		\item Similar to all functions, inverse function of random variables gives the set of outcomes from the probability space ($\Omega$). Domain and co-domain for this function is defined appropriately.  
+		\item \textbf{Cumulative Distribution function (CDF)} of a random variable is a function which yields probability of a particular set of values composed of any value that is less than or equal to a given number. It is denoted as $F_X$. Mathematically, 
+		\begin{equation} 
+		\begin{aligned}
+			F_X : supp(X) \rightarrow [0,1],  \forall a\in co(X)\\
+			 F_X(a) &= P[X^{-1}(b): b \leq a] \\
+			&= P[\{w\in \Omega:X(w) \leq a\}]
+		\end{aligned}
+		\end{equation}
+		Here $P$ is defined over probability space of random variable. $P$ is denoted square brackets to indicate that it not a simple function, but a more complex mathematical operator 
+	\end{enumerate}
+
+	\begin{center}
+		\section*{Some important properties of CDF}
+	\end{center}
+	\begin{enumerate}
+		\item CDF yields probabilities of random variable unlike probabilities of random events. Even though implicitly we find probabilities of random events. Hence, its domain is $[0,1]$
+		\item CDF is a monotonically non-decreasing function. As the name suggests, it is cumulative distribution. Since, range is non-negative function it can either increase or remain constant. Mathematically, $F_X(a) \leq F_X(b), \forall a < b  $
+		\item $F_X$ is a \textit{right continuous} for discrete and \textit{continuous} for continuous probability spaces. To illustrate the difference, if $F_X$ is both left and right continuous then probability of occurring an event is as follows
+		\begin{equation}
+		\begin{aligned}
+			P[X = a] &= F_X(a) - \lim\limits_{x \rightarrow a^{-}}F_X(x)\\
+			&= F_X(a) - F_X(a)  \hspace{1cm}[\because \text{ it  is both left  and  right  continuous}] \\
+			&= 0
+		\end{aligned}
+		\end{equation}
+		This illustrates that for continuous random variable, probability of occurrence of a singleton event, in this case $a$ is zero. This actually matches with our intuition as mentioned in the previous section
+		\item Simple property, $\lim\limits_{a \rightarrow max(supp(X))}F_X(a) = 1$\footnote{\label{note1}Here, $a$ is considered to be a real number not a vector. This concept can be easily extended to a vector of real values. }. Since, when maximum of support is considered, CDF calculates probability of entire sample space $\Omega$
+		\item Similarly, \hspace{1.3cm}$\lim\limits_{a \rightarrow min(supp(X))}F_X(a) = 0$\footnotemark[\ref{note1}] Since, when minimum of support is considered, CDF calculates probability of no event in sample space $\Omega$
+	\end{enumerate}
+	
+	\newpage
+	\begin{center}
+		\section*{Methods of Capturing Uncertainty!}
+	\end{center}
+	
+	\subsection*{Modeling Stochastic process:}
+	CDF might be good probability measure, but it doesn't capture the underlying uncertainty of the stochastic process. To capture this, one needs to represent the process in a minimalistic fashion which will then bring out all the features of the uncertainty. CDF fails in this scenario due to its cumulative nature of representation. To this extent, one can define a function which will measure singleton event (in discrete case at least) probability rather than cumulative probability. 
+	
+	\begin{enumerate}[noitemsep,topsep=0pt]
+		\item [--] In discrete case, this measure is called \textbf{probability mass function (pmf)} denoted by $f_x$\footnote{Captial F is for indicating cumulative distribution (CDF). Small F is for individual distribution(pmf/pdf)}. Mathematically, 
+		\begin{equation}
+			\forall a \in \mathbb{R}^{n}, f_X(a) = 
+			\begin{cases}
+				P(\{w \in \Omega, X(w) = a\}), &\ \text{if} \ a \in co(X)\\
+				0, &\ \text{otherwise}\\
+			\end{cases}
+		\end{equation}
+		One important condition, $\underset{a \in supp(X)}{\Sigma}f_X(a) = 1$
+		\item [--] In continuous case, since probability of a singleton event is $0$, a equivalent density function is defined over a region of support. This kind of function is called \textbf{probability density function (pdf)}. Mathematically, 
+		\begin{equation}
+		\begin{aligned}
+		\forall (a,b] \subseteq supp(X), \\
+		P[x \in (a,b]] &\triangleq \int_{x \in A} \rho(x)dx\\
+					   &= F_X(b) - F_X(a)
+		\end{aligned}
+		\end{equation}
+		\underline{Few points on pdf:}
+		\begin{enumerate}
+			\item[$\rightarrow$] PDF doesn't yield probability of a random variable $x$. Instead, it yields probability density of $x$
+			\item[$\rightarrow$] Since they don't define probabilities, their range can be outside $[0,1]$. 
+			\item[$\rightarrow$] Analogous to pmf, their integral over the entire domain of random variable yields $1$
+		\end{enumerate}
+	\end{enumerate}
+
+	\subsection*{Quantifying Uncertainity}
+	Now that stochastic process is modeled as pdf/pmf, time to address the ultimate question: How to quantify uncertainty ? What makes two stochastic process different? both qualitatively and quantitatively.  \\
+	
+	In literature there are number of ways to quantify uncertainty, but two important ways are 
+	\begin{enumerate}[noitemsep,topsep=0pt]
+		\item Moments of Random variable 
+		\item Information and Entropy of Random Variable \\
+	\end{enumerate}
+	\subsubsection*{Moments}
+	They describe how the density/mass of the probability distribution is spread over the support of the random variable, in this case $c \in supp(X)$. Generally $c$ is chose to be the first order moment $\mu_1^{0}$. These moments are called central moments. An n-th order moment around a given value $c \in supp(X)$ is defined as follows :
+	\begin{equation}
+		\mu_{n}^{c} \triangleq 	\begin{cases}
+		\int_{x \in supp(X)} (x-c)^n f_X(x) dx \hspace{1cm}\text{if $x$ is continuous}\\
+		\underset{x \in supp(X)}{\Sigma} (x-c)^n f_X(x) \hspace{1.7cm} \text{if $x$ is discrete}
+		\end{cases}
+	\end{equation}
+	
+	In probabilistic robotics, only 1st and 2nd moment are of primary interest, since they contain all the information which quantifies the shape of uncertainty of a stochastic process. They (1st and 2nd moments) are also popularly known as \textit{mean} or \textit{expectation} $E_X[X]$ and \textit{variance} $V_X[X]$ of probability distribution respectively. Popularly denoted as $\mu_X$ and $\sigma_X^2$. \\
+	Mathematically for continuous case, \footnote{for discrete case replace $\int_{x \in supp(X)}$ with $\underset{x \in supp(X)}{\Sigma}$ } 
+	\begin{equation*}
+	\begin{aligned}
+	E[X] &\triangleq \int_{x \in supp(X)} xf(x)dx\\
+	V[X] &\triangleq \int_{x \in supp(X)} (x - E[X])^2f(x)dx
+	\end{aligned}
+	\end{equation*}
+	 
+	\paragraph*{Properties of moments}
+	\begin{enumerate}
+	\item Expectation is the value which one would expect to see if that stochastic process occurs. This value may not be in the support of the random variable.
+	\item Variance on the other hand denotes the average distance (in a crude sense) of the values that random variable can take with respect to the mean. Mathematically, $V[X] = E[(X- E[X])^2]$.\\
+	Intuitively, a random variable with large variance has a flat shape (more dispersion from the center), while a random variable with small variance (less dispersion from the center) has peak shape.   
+	\end{enumerate}
+\end{document}
