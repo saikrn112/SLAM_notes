@@ -214,6 +214,11 @@
 	\begin{enumerate}
 	\item Expectation is the value which one would expect to see if that stochastic process occurs. This value may not be in the support of the random variable.
 	\item Variance on the other hand denotes the average distance (in a crude sense) of the values that random variable can take with respect to the mean. Mathematically, $V[X] = E[(X- E[X])^2]$.\\
-	Intuitively, a random variable with large variance has a flat shape (more dispersion from the center), while a random variable with small variance (less dispersion from the center) has peak shape.   
+	Intuitively, a random variable with large variance has a flat shape (more dispersion from the center), while a random variable with small variance (less dispersion from the center) has peak shape.
+	\item Variance and Expectation are algebraically related as given. $V[X] = E[X^2] - (E[X])^2$. This relation is, again, intuitive since variance is measuring average distribution about the mean. 
+	\item Expectation is a linear operator. That is, $E[aX+bY] = aE[X] + bE[Y]$. Where as, Variance is not. 
+	\item Extension of Expectation to a function of random variable gives, $E[g(x)] = \int g(x)f(x)dx$, for continuous random variable and $E[g(x)] = \Sigma g(x)f(x)$
 	\end{enumerate}
+	
+	
 \end{document}
