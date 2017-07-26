@@ -220,5 +220,54 @@
 	\item Extension of Expectation to a function of random variable gives, $E[g(x)] = \int g(x)f(x)dx$, for continuous random variable and $E[g(x)] = \Sigma g(x)f(x)$
 	\end{enumerate}
 	
+	\subsubsection*{Self Information and Entropy}
+	Self Information is another form of measuring or capturing uncertainty of the random variable. It forms a part of information theory. This measures the amount of information relayed (or need to be relayed) by a particular random variable. That is, as the confidence in an occurrence of th event increases the amount information relayed by the random variable decreases. In information theory, Self Information is also called surprisal. Mathematically, it is defined as 
+	\begin{equation*}
+		\forall\hspace{0.1cm} a\hspace{0.1cm} \epsilon \hspace{0.1cm}supp(A), I(a) \triangleq log \frac{1}{P[X=a]} = -log f_X(a)
+	\end{equation*}
+	Entropy is also another measure for capturing the uncertainty derived from the information theory. But it is different from Self Information. Entropy is the expected information from a random variable. The uniform distribution has more entropy since the amount of uncertainty associated to that distribution is high. For example, consider a particle filter in robot localization setting. In the initial step, it assumes that the robot is everywhere in the given map. That is it's distribution of robot location is distributed uniformly. This implies that this kind of distribution has lot of information. Mathematically, Entropy is defined as
+	\begin{align*}
+		H[X] \triangleq E[I(X)] =& - \underset{a \in supp(X)}{\Sigma} -P[X=a]logP[X=a]\hspace{0.5cm}\text{in Discrete case}\\
+		=& \underset{{f \epsilon support(X)}}{\int} f_X(a)logf_y(a)dy \hspace{0.5cm} \text{in Continuous case}
+	\end{align*}
+	For continuous case, instead of differential entropy, famous KL divergence is used (Kullback - Leibler Divergence). It is also known as relative entropy. It measures the distance between two probability distributions. That is, how one probability distribution diverges from another. Mathematically, it is defined as below. It is measuring how the probability distribution of $P$ is diverging with $Q$ 
+	\begin{equation*}
+		D_{KL}(P||Q) = \underset{i}{\Sigma}P(i)log\frac{P(i)}{Q(i)}			
+	\end{equation*}
+	\begin{center}
+		\subsection*{MultiVariate Probability}
+	\end{center}
+	In robotics, particularly in Simultaneous Localization and Mapping, a single random variable cannot capture the uncertainty associated with it. Thus arises the need for mutlivariate probability.\\
 	
+	\subsubsection*{Joint Probability and Marginalization} Joint Probability represents the relations between random variables (either defined on the same probability space or not). Joint probability distribution  provides information about the probability that all the random variables have values with in the specified limits \textit{simultaneously} All the properties of a regular probability are applicable to the Joint probability distribution.
+	
+	For example, CDF defined on Joint Probability must satisfy the Maximum probability constraint defined in properties of probability function. 
+%	\begin{center}	
+%		\subsection*{Transforming Random Variables}	
+%	\end{center}
+%	\begin{center}	
+%		\subsection*{Approximations}	
+%	\end{center}
+	\begin{center}	
+		\subsection*{Conditional Probability}	
+	\end{center}
+	\textit{*continuing from the page 99. Need to write till then}
+	
+	\subsubsection{Conditional Expectation}
+	It should be noted that a function of random variable in itself is a random variable. Going with this, Conditional Expectation is as it sounds an expectation over a set of conditioned events or in this case random variables. i.e. $E[X|Y]$. Mathematically, this is equivalent to, 
+	\begin{align*}
+		E[X|Y] = \begin{cases}
+		\underset{x \epsilon supp(X)}{\Sigma}xf_{X|Y}(x) \hspace{0.5cm} \text{Discrete case} \\
+		\underset{x \epsilon supp(X)}{\int}xf_{X|Y}dx \hspace{0.5cm} \text{Continuous Case} 
+		\end{cases} 
+	\end{align*} 
+	It should be noted that this expectation($E[X|Y]$) itself has some uncertainty associated with it(Why??). This is due to its dependence of expectation on random variable $Y$. An interesting result with conditional expectation is as follows, 
+	\begin{equation*}
+		E[E[X|Y]] = E[X]
+	\end{equation*}
+	\begin{center}
+		\subsection*{Probabilistic Graphical Models}
+	\end{center}
+	Fusion of Graph theory and Probability is PGM. It is a representation of the conditional dependencies and their assumptions.\\ 
+	\textit{Need to port the hand written notes to the digital format}  
 \end{document}
